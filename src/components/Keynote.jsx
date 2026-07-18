@@ -1,5 +1,4 @@
  import Header from "./header";
- import Footer from "./footer";
  import Keyynote from "../assets/Keynote.png";
 export default function Keynote(){
     return(
@@ -14,7 +13,6 @@ export default function Keynote(){
                     <p>Complete quizzes from Keynote and other important topics.</p>
                 </div>
             </div>
-            <Footer/>
              
         </div>
     );

@@ -1,6 +1,5 @@
  import {useState} from 'react';
  import Header from "./header";
- import Footer from "./footer";
  import mainitem from "../assets/grammarbook.png"
 export default function Grammar(){
     const [isShow,setIsShown] = useState(false);
@@ -19,7 +18,6 @@ export default function Grammar(){
             <div className="explainatio"> {/*აქ უნდა ჩავწერო დინამიურად backend-იდან სახელები და ახსნები */}
 
             </div>
-            <Footer/>
         </div>
     );
 }
