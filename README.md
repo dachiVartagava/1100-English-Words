@@ -4,7 +4,7 @@ An interactive web application designed to streamline vocabulary acquisition and
 
 ## Project Status and Demo
 * Project Status: In Active Development
-* Live Link: [Insert Deploy Link Here]
+* Live Link: [https://dachivartagava.github.io/1100-English-Words]
 
 ## Key Features
 * Advanced Dictionary Lookup: Users can search any word to instantly retrieve its definition, contextual sentences, and corresponding grammatical forms such as nouns, verbs, adjectives, and adverbs.
@@ -31,7 +31,7 @@ An interactive web application designed to streamline vocabulary acquisition and
 
 ## პროექტის სტატუსი და დემო
 * პროექტის სტატუსი: აქტიური დეველოპმენტის პროცესშია
-* ცოცხალი ლინკი: [ჩასვი დეპლოის ლინკი]
+* ცოცხალი ლინკი: [https://dachivartagava.github.io/1100-English-Words]
 
 ## ძირითადი ფუნქციონალი
 * ლექსიკონის გაფართოებული ძებნა: მომხმარებელს შეუძლია ჩაწეროს სიტყვა და მომენტალურად მიიღოს მისი მნიშვნელობა, კონტექსტური წინადადებები და გრამატიკული ფორმები (არსებითი სახელი, ზმნა, ზედსართავი სახელი, ზმნიზედა).
