@@ -1,0 +1,32 @@
+{
+  "name": "+1100 English Words",
+  "short_name": "1100 Words",
+  "description": "Learn +1100 English words with quizzes, grammar and more.",
+  "start_url": "/1100-English-Words/",
+  "scope": "/1100-English-Words/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#863bff",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/1100-English-Words/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/1100-English-Words/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/1100-English-Words/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
