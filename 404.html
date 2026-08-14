@@ -9,10 +9,7 @@
     // რომელიც history.replaceState-ით აღადგენს URL-ს React Router-ისთვის.
     (function () {
       try {
-        sessionStorage.setItem(
-          'gh_pages_redirect',
-          location.pathname.replace(/^\/(1100-English-Words)?/, '') + location.search
-        );
+        sessionStorage.setItem('gh_pages_redirect', location.pathname + location.search);
       } catch (e) {}
       location.replace('/1100-English-Words/');
     })();
