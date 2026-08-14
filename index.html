@@ -5,6 +5,18 @@
     <link rel="icon" type="image/svg+xml" href="/1100-English-Words/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>+1100 English Words</title>
+    <script>
+      // SPA-ფოლბეკი: 404.html-დან მოსვლისას URL-ის აღდგენა გადატვირთვამდე
+      (function () {
+        try {
+          var path = sessionStorage.getItem('gh_pages_redirect');
+          if (path) {
+            sessionStorage.removeItem('gh_pages_redirect');
+            history.replaceState(null, '', path);
+          }
+        } catch (e) {}
+      })();
+    </script>
     <script type="module" crossorigin src="/1100-English-Words/assets/index-CfNSMJOD.js"></script>
     <link rel="stylesheet" crossorigin href="/1100-English-Words/assets/index-IlR5NBo4.css">
   </head>

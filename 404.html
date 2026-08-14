@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Redirecting…</title>
+  <script>
+    // SPA fallback GitHub Pages-ისთვის:
+    // 404.html ინახავს მიმდინარე მისამართს და მიმართავს index.html-ზე,
+    // რომელიც history.replaceState-ით აღადგენს URL-ს React Router-ისთვის.
+    (function () {
+      try {
+        sessionStorage.setItem(
+          'gh_pages_redirect',
+          location.pathname.replace(/^\/(1100-English-Words)?/, '') + location.search
+        );
+      } catch (e) {}
+      location.replace('/1100-English-Words/');
+    })();
+  </script>
+</head>
+<body></body>
+</html>
