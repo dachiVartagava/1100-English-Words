@@ -6,8 +6,8 @@
   "scope": "/1100-English-Words/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#ffffff",
-  "theme_color": "#863bff",
+  "background_color": "#fbefdc",
+  "theme_color": "#142542",
   "lang": "en",
   "icons": [
     {

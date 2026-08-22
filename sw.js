@@ -1,4 +1,4 @@
-const CACHE = "english-words-v1";
+const CACHE = "english-words-v2";
 const BASE = "/1100-English-Words";
 
 self.addEventListener("install", (event) => {
