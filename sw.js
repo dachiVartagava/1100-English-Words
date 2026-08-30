@@ -1,4 +1,13 @@
-const CACHE = "english-words-v2";
+// ⚠️ v3: index.html ახლა network-first-ია.
+//
+//    ადრე ყველაფერი cache-first იყო (`return cached || network`), მათ შორის
+//    index.html. რადგან index.html ახალი ბილდის ჰეშირებულ ფაილებზე მიუთითებს,
+//    ქეშირებული ძველი index.html სამუდამოდ ძველ JS-ს ტვირთავდა — ანუ ახალი
+//    დეპლოი მომხმარებლამდე საერთოდ არ აღწევდა, სანამ ქეშის ვერსიას არ შეცვლი.
+//
+//    ახლა: HTML — ქსელიდან (ოფლაინში კეშიდან), ჰეშირებული ასეტები — კეშიდან
+//    (მათი სახელი ბილდზე იცვლება, ამიტომ ძველი ვერსია ვერ "გაიჭედება").
+const CACHE = "english-words-v3";
 const BASE = "/1100-English-Words";
 
 self.addEventListener("install", (event) => {
@@ -23,24 +32,43 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  const url = new URL(event.request.url);
+  const req = event.request;
+  const url = new URL(req.url);
 
-  // მხოლოდ იმავე ორიგინის GET-მოთხოვნები (Supabase API, PayPal და ა.შ. ხელუხლებელი რჩება)
-  if (event.request.method !== "GET" || url.origin !== self.location.origin) return;
+  // მხოლოდ იმავე ორიგინის GET (Supabase API, PayPal და ა.შ. ხელუხლებელი რჩება)
+  if (req.method !== "GET" || url.origin !== self.location.origin) return;
 
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      // ონლაინში ჯერ ქსელი, ვარდნისას კი კეში (შენახული ფაილებისთვის)
-      const network = fetch(event.request)
+  const isHTML =
+    req.mode === "navigate" ||
+    (req.headers.get("accept") || "").includes("text/html");
+
+  if (isHTML) {
+    // ── network-first: ახალი დეპლოი მაშინვე მიდის მომხმარებელთან ──
+    event.respondWith(
+      fetch(req)
         .then((res) => {
           if (res && res.status === 200 && res.type === "basic") {
             const clone = res.clone();
-            caches.open(CACHE).then((cache) => cache.put(event.request, clone));
+            caches.open(CACHE).then((cache) => cache.put(req, clone));
           }
           return res;
         })
-        .catch(() => cached);
-      return cached || network;
+        .catch(() => caches.match(req).then((c) => c || caches.match(BASE + "/index.html")))
+    );
+    return;
+  }
+
+  // ── ასეტები: cache-first (სახელი ჰეშიანია, ძველი ვერსია ვერ გაიჭედება) ──
+  event.respondWith(
+    caches.match(req).then((cached) => {
+      if (cached) return cached;
+      return fetch(req).then((res) => {
+        if (res && res.status === 200 && res.type === "basic") {
+          const clone = res.clone();
+          caches.open(CACHE).then((cache) => cache.put(req, clone));
+        }
+        return res;
+      });
     })
   );
 });
